@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Yashvi ✨</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(120deg,#c77dff,#ff758f);
+  overflow:hidden;
+}
+
+.container{
+  width:90%;
+  max-width:420px;
+}
+
+.slide{
+  display:none;
+  background:rgba(255,255,255,0.96);
+  padding:30px;
+  border-radius:22px;
+  text-align:center;
+  animation:fade 0.8s ease;
+}
+
+.slide.active{
+  display:block;
+}
+
+h1{
+  color:#7b2cbf;
+}
+
+h2{
+  color:#ff4d6d;
+}
+
+p{
+  color:#444;
+  margin:15px 0;
+}
+
+.quote{
+  font-style:italic;
+}
+
+button{
+  margin-top:20px;
+  padding:12px 28px;
+  border:none;
+  border-radius:25px;
+  background:linear-gradient(90deg,#ff4d6d,#845ec2);
+  color:#fff;
+  font-size:1rem;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* Envelope */
+.envelope{
+  width:200px;
+  height:120px;
+  margin:30px auto;
+  position:relative;
+  cursor:pointer;
+}
+
+.envelope .body{
+  width:100%;
+  height:100%;
+  background:#ffb3c6;
+  border-radius:0 0 18px 18px;
+}
+
+.envelope .flap{
+  position:absolute;
+  top:0;
+  width:100%;
+  height:60px;
+  background:#ff758f;
+  transform-origin:top;
+  transition:transform 1s ease;
+  border-radius:18px 18px 0 0;
+}
+
+.envelope.open .flap{
+  transform:rotateX(-160deg);
+}
+
+/* Form */
+form{
+  margin-top:15px;
+}
+
+input, textarea{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
+textarea{
+  resize:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+  <source src="bg.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+  <!-- Slide 1 -->
+  <section class="slide active">
+    <h1>Something for you, Yashvi ✨</h1>
+    <p>This isn’t random. Just take it slow.</p>
+    <button onclick="startExperience()">Continue</button>
+  </section>
+
+  <!-- Slide 2 -->
+  <section class="slide">
+    <h1>A Thought</h1>
+    <p class="quote">
+      “Some people leave marks without trying.  
+      Some moments stay longer than expected.”
+    </p>
+    <button onclick="nextSlide()">Continue</button>
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="slide">
+    <h1>Happy Birthday 🎂</h1>
+    <p>
+      I hope this year gives you peace, growth,  
+      and happiness that feels real.
+    </p>
+    <button onclick="nextSlide()">One last thing</button>
+  </section>
+
+  <!-- Slide 4 -->
+  <section class="slide">
+    <h1>The Final Envelope ✉️</h1>
+    <p>Tap to open</p>
+
+    <div class="envelope" onclick="openEnvelope()">
+      <div class="flap"></div>
+      <div class="body"></div>
+    </div>
+  </section>
+
+  <!-- Slide 5 (Form) -->
+  <section class="slide">
+    <h1>One Last Step</h1>
+    <p>Enter your email to unlock the final message</p>
+
+    <form action="https://api.staticforms.xyz/submit" method="POST">
+      <input type="hidden" name="accessKey" value="sf_a076n625nifmjb1f3kd3g5nj">
+      <input type="hidden" name="subject" value="Message from Yashvi">
+
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" placeholder="Say anything you feel…" required></textarea>
+
+      <button type="submit">Unlock</button>
+    </form>
+  </section>
+
+  <!-- Slide 6 -->
+  <section class="slide">
+    <h1>Thank You 💖</h1>
+    <p>
+      No expectations.  
+      Just a reminder that someone cared.
+    </p>
+    <h2>Happy Birthday, Yashvi 🎉</h2>
+  </section>
+
+</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+const music = document.getElementById('bgMusic');
+
+function startExperience(){
+  music.play();
+  nextSlide();
+}
+
+function nextSlide(){
+  slides[current].classList.remove('active');
+  current++;
+  slides[current].classList.add('active');
+}
+
+function openEnvelope(){
+  document.querySelector('.envelope').classList.add('open');
+  setTimeout(nextSlide,1200);
+}
+</script>
+
+</body>
+  </html>
